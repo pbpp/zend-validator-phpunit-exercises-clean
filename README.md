@@ -2,11 +2,22 @@
 
 This version is meant as a base for PHPUnit exercises. It has most of the unit test stripped and it shouldn't be used in any projects.
 
-After cloning repository perform:
+After cloning repository perform (inside of project directory):
 
 ```
 composer install
+```
+
+Then on Linux:
+
+```
 vendor/bin/phpunit --bootstrap vendor/autoload.php 
+```
+
+On Windows:
+
+```
+vendor\bin\phpunit.bat --bootstrap <full_path_to_project>\vendor\autoload.php
 ```
 
 You should see an output like this:
