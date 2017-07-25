@@ -9,8 +9,28 @@
 namespace ZendTest\Validator;
 
 use Zend\Validator\IsInstanceOf;
+use Zend\Validator\Between;
 
 class IsInstanceOfTest extends \PHPUnit_Framework_TestCase
 {
-    public function testTest() { }
+    public function testTest() 
+    {
+    	$options = ['className' => Between::class];
+    	$instanceOfValidator = new IsInstanceOf($options);
+
+        $this->assertNotEquals('FooBar', $instanceOfValidator->getClassName());
+        $this->assertEquals(Between::class, $instanceOfValidator->getClassName());
+    }
+    
+    public function testMock()
+    {
+        $mock = $this->getMockBuilder(IsInstanceOf::class)
+                ->disableOriginalConstructor()
+                ->getMock();
+        
+        $options = ['className' => IsInstanceOf::class];
+        $isInstanceOfValidator = new IsInstanceOf($options);
+        
+        $this->assertEquals(true, $isInstanceOfValidator->isValid($mock));
+    }
 }

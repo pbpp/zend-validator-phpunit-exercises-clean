@@ -13,5 +13,14 @@ use Zend\Validator\Db\NoRecordExists;
 
 class NoRecordExistsTest extends \PHPUnit_Framework_TestCase
 {
-    public function testTest() { }
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+    public function testTest()
+    {
+        $options = [];
+//        $this->expectException(\InvalidArgumentException::class);
+        
+        $noRecordExistsInstance = new NoRecordExists($options);
+    }
 }
